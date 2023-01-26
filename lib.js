@@ -77,13 +77,10 @@
   }
 
   function every(arr, callback) {
-    let value = false;
+    let value = true;
     for (let i = 0; i < arr.length; i++) {
-      if (callback(arr[i], i, arr)) {
-        value = true;
-      } else {
-        value = false;
-        return value;
+      if (!callback(arr[i], i, arr)) {
+        return false;
       }
     }
     return value;
