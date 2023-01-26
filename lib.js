@@ -128,11 +128,9 @@
 
   function pairs(obj) {
     let result = [];
-    let i = 0;
     for (let prop in obj) {
       if (obj.hasOwnProperty(prop)) {
-        result[i] = [prop, obj[prop]];
-        i++;
+        result.push([prop, obj[prop]]);
       }
     }
     return result;
