@@ -50,9 +50,7 @@
 
   function take(arr, n) {
     let newArr = [];
-    if (n === 0) {
-      return newArr;
-    }
+
     for (let i = 0; i < n; i++) {
       newArr.push(arr[i]);
     }
@@ -70,14 +68,12 @@
   }
 
   function some(arr, callback) {
-    let value = false;
     for (let i = 0; i < arr.length; i++) {
       if (callback(arr[i], i, arr)) {
-        value = true;
-        return value;
+        return true;
       }
     }
-    return value;
+    return false;
   }
 
   function every(arr, callback) {
