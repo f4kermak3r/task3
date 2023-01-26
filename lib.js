@@ -108,11 +108,9 @@
 
   function keys(obj) {
     let result = [];
-    let i = 0;
     for (let prop in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, prop)) {
-        result[i] = prop;
-        i++;
+        result.push(prop);
       }
     }
     return result;
