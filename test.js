@@ -171,3 +171,17 @@ testMin([1, 2, 3, 100], [1]);
 testMin([-Infinity, -1000000000, 0, 100000000], [-Infinity]);
 testMin([-Infinity, -Infinity, -Infinity], [-Infinity]);
 console.log("[min]: Testing done");
+
+/// test cases for obj methods
+
+const testKeys = (obj, expected) => {
+  const actual = myModule.keys(obj);
+  console.log(`
+  Inputs: ${obj}
+  Actual: ${actual}
+  Expected: ${expected}
+`);
+};
+console.log("[keys]: Testing started");
+testKeys({ 1: "one", 2: "two", 3: "three" }, [1, 2, 3]);
+console.log("[keys]: Testing done");
