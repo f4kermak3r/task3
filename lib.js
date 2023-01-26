@@ -118,11 +118,9 @@
 
   function values(obj) {
     let result = [];
-    let i = 0;
     for (let prop in obj) {
       if (obj.hasOwnProperty(prop)) {
-        result[i] = obj[prop];
-        i++;
+        result.push(obj[prop]);
       }
     }
     return result;
