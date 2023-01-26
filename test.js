@@ -3,8 +3,6 @@ const myModule = require("./lib.js");
 const isEqual = (a = [], b = []) =>
   a.length === b.length && a.every((v, i) => v === b[i]);
 
-// Map method test
-
 const testMap = (input, callback, expected) => {
   const actual = myModule.map(input, callback);
   console.log(`
@@ -20,8 +18,6 @@ testMap([1, 2, 3, 4], (v) => v * 2, [2, 4, 6, 8]);
 testMap([1, 2, 3, 4], (v) => v + 2, [3, 4, 5, 6]);
 testMap([1, 2, 3, 4], (v) => v, [1, 2, 3, 4]);
 console.log("[map]: Testing done");
-
-// Reduce method test
 
 const testReduce = (input, initialValue, callback, expected) => {
   const actual = [myModule.reduce(input, callback, initialValue)];
@@ -171,8 +167,6 @@ testMin([1, 2, 3, 100], [1]);
 testMin([-Infinity, -1000000000, 0, 100000000], [-Infinity]);
 testMin([-Infinity, -Infinity, -Infinity], [-Infinity]);
 console.log("[min]: Testing done");
-
-/// test cases for obj methods
 
 const testKeys = (obj, expected) => {
   const actual = myModule.keys(obj);
