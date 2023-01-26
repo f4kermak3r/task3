@@ -32,26 +32,29 @@
 
   function filter(arr, callback) {
     let newArr = [];
-    let index = 0;
     for (let i = 0; i < arr.length; i++) {
       if (callback(arr[i], i, arr)) {
-        newArr[index] = arr[i];
-        index++;
+        newArr.push(arr[i]);
       }
     }
     return newArr;
   }
 
   function forEach(arr, callback) {
-    for (let i = 0; i < arr.length; i++) {
-      callback(arr[i], i, arr);
+    let copyArr = [...arr];
+    for (let i = 0; i < copyArr.length; i++) {
+      callback(copyArr[i], i, copyArr);
     }
+    return copyArr;
   }
 
   function take(arr, n) {
     let newArr = [];
+    if (n === 0) {
+      return newArr;
+    }
     for (let i = 0; i < n; i++) {
-      newArr[i] = arr[i];
+      newArr.push(arr[i]);
     }
     return newArr;
   }
@@ -152,6 +155,28 @@
       obj[arr[i][0]] = arr[i][1];
     }
     return obj;
+  }
+
+  function chain(arr) {
+    let newArr = [];
+    let start = 0;
+    let end = 0;
+    return {
+      take(n) {
+        end = n;
+        return this;
+      },
+      skip(n) {
+        start = n;
+        return this;
+      },
+      value() {
+        for (let i = start; i < end; i++) {
+          newArr.push(arr[i]);
+        }
+        return newArr;
+      },
+    };
   }
 
   return {
