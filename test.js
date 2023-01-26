@@ -184,4 +184,20 @@ const testKeys = (obj, expected) => {
 };
 console.log("[keys]: Testing started");
 testKeys({ 1: "one", 2: "two", 3: "three" }, [1, 2, 3]);
+testKeys({ 3: "one", 1: "two", 3: "three" }, [1, 2, 3]);
 console.log("[keys]: Testing done");
+
+const testValues = (obj, expected) => {
+  const actual = myModule.values(obj);
+  console.log(`
+  Inputs: ${obj}
+  Actual: ${actual}
+  Expected: ${expected}
+  Assess: ${isEqual(actual, expected)}
+`);
+};
+console.log("[values]: Testing started");
+testValues(["x", "y", "z"], ["x", "y", "z"]);
+testValues({ 0: "23", 1: "gg", 2: "ff" }, ["23", "gg", "ff"]);
+testValues({ 70: "x", 21: "y", 35: "z" }, ["y", "z", "x"]);
+console.log("[values]: Testing done");
