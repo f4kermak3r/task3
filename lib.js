@@ -160,6 +160,9 @@
         return this;
       },
       value() {
+        if (end > arr.length) {
+          end = arr.length;
+        }
         for (let i = start; i < end; i++) {
           newArr.push(arr[i]);
         }

@@ -177,7 +177,7 @@ console.log("[min]: Testing done");
 const testKeys = (obj, expected) => {
   const actual = myModule.keys(obj);
   console.log(`
-  Inputs: ${obj}
+  Inputs: ${JSON.stringify(obj)}
   Actual: ${actual}
   Expected: ${expected}
 `);
@@ -190,7 +190,7 @@ console.log("[keys]: Testing done");
 const testValues = (obj, expected) => {
   const actual = myModule.values(obj);
   console.log(`
-  Inputs: ${obj}
+  Inputs: ${JSON.stringify(obj)}
   Actual: ${actual}
   Expected: ${expected}
   Assess: ${isEqual(actual, expected)}
@@ -201,3 +201,71 @@ testValues(["x", "y", "z"], ["x", "y", "z"]);
 testValues({ 0: "23", 1: "gg", 2: "ff" }, ["23", "gg", "ff"]);
 testValues({ 70: "x", 21: "y", 35: "z" }, ["y", "z", "x"]);
 console.log("[values]: Testing done");
+
+const testPairs = (obj, expected) => {
+  const actual = myModule.pairs(obj);
+  console.log(`
+  Inputs: ${JSON.stringify(obj)}
+  Actual: ${actual}
+  Expected: ${expected}
+`);
+};
+console.log("[pairs]: Testing started");
+testPairs({ 0: "23", 1: "gg", 2: "ff" }, [
+  [0, "23"],
+  [1, "gg"],
+  [2, "ff"],
+]);
+testPairs({ 70: "x", 21: "y", 35: "z" }, [
+  [21, "y"],
+  [35, "z"],
+  [70, "x"],
+]);
+testPairs({ 7: 1 }, [[7, "1"]]);
+console.log("[pairs]: Testing done");
+
+const testFromPairs = (obj, expected) => {
+  const actual = myModule.fromPairs(obj);
+  console.log(`
+  Inputs: ${obj}
+  Actual: ${JSON.stringify(actual)}
+  Expected: ${JSON.stringify(expected)}
+`);
+};
+console.log("[fromPairs]: Testing started");
+testFromPairs(
+  [
+    [0, "23"],
+    [1, "gg"],
+    [2, "ff"],
+  ],
+  { 0: "23", 1: "gg", 2: "ff" }
+);
+testFromPairs(
+  [
+    [21, "y"],
+    [35, "z"],
+    [70, "x"],
+  ],
+  { 70: "x", 21: "y", 35: "z" }
+);
+testFromPairs([[7, "1"]], { 7: "1" });
+console.log("[fromPairs]: Testing done");
+
+const testChain = (arr, numTake, numSkip, expected) => {
+  const actual = myModule.chain(arr).take(numTake).skip(numSkip).value();
+  console.log(`
+  Inputs: [${arr}]
+  Actual: [${actual}]
+  Expected: [${expected}]
+  Assess: ${isEqual(actual, expected)}
+`);
+};
+console.log("[chain]: Testing started");
+testChain([1, 2, 3, 4, 5], 4, 2, [3, 4]);
+testChain([1, 2, 3], 101, 2, [3]);
+testChain([1, 2, 3], 2, 0, [1, 2]);
+testChain([1, 2, 3], 0, 0, []);
+testChain([1, 2, 3, 4], 0, 10, []);
+testChain(["one", "two", "three", "four"], 3, 10, []);
+console.log("[chain]: Testing done");
