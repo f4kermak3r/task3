@@ -111,3 +111,63 @@ testSkip([], 3, []);
 testSkip([1, 2, 3], 2, [3]);
 testSkip([1, 2, 3], 7, []);
 console.log("[skip]: Testing done");
+
+const testSome = (arr, callback, expected) => {
+  const actual = [myModule.some(arr, callback)];
+  console.log(`
+  Inputs: ${arr}
+  Actual: ${actual}
+  Expected: ${expected}
+  Assess: ${isEqual(actual, expected)}
+`);
+};
+console.log("[some]: Testing started");
+testSome([1, 4, -6, 5], (item) => item > 3, [true]);
+testSome([1, 4, "test"], (item) => item === "test", [true]);
+testSome([10, 10, 10], (item) => item < 3, [false]);
+console.log("[some]: Testing done");
+
+const testEvery = (arr, callback, expected) => {
+  const actual = [myModule.every(arr, callback)];
+  console.log(`
+  Inputs: ${arr}
+  Actual: ${actual}
+  Expected: ${expected}
+  Assess: ${isEqual(actual, expected)}
+`);
+};
+console.log("[every]: Testing started");
+testEvery([1, 4, -6, 5], (item) => item > 3, [false]);
+testEvery([1, 4, "test"], (item) => item === "test", [false]);
+testEvery([10, 10, 10], (item) => item > 3, [true]);
+console.log("[every]: Testing done");
+
+const testMax = (arr, expected) => {
+  const actual = [myModule.max(arr)];
+  console.log(`
+  Inputs: ${arr}
+  Actual: ${actual}
+  Expected: ${expected}
+  Assess: ${isEqual(actual, expected)}
+`);
+};
+console.log("[max]: Testing started");
+testMax([1, 2, 3, 100], [100]);
+testMax([-Infinity, -1000000000, 0, 100000000], [100000000]);
+testMax([-Infinity, -Infinity, -Infinity], [-Infinity]);
+console.log("[max]: Testing done");
+
+const testMin = (arr, expected) => {
+  const actual = [myModule.min(arr)];
+  console.log(`
+  Inputs: ${arr}
+  Actual: ${actual}
+  Expected: ${expected}
+  Assess: ${isEqual(actual, expected)}
+`);
+};
+console.log("[min]: Testing started");
+testMin([1, 2, 3, 100], [1]);
+testMin([-Infinity, -1000000000, 0, 100000000], [-Infinity]);
+testMin([-Infinity, -Infinity, -Infinity], [-Infinity]);
+console.log("[min]: Testing done");
