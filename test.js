@@ -83,9 +83,10 @@ console.log("[forEach]: Testing done");
 const testTake = (arr, n, expected) => {
   const actual = myModule.take(arr, n);
   console.log(`
-  Inputs: ${arr}
-  Actual: ${actual}
-  Expected: ${expected}
+  Inputs: [${arr}]
+  Take value: ${n}
+  Actual: [${actual}]
+  Expected: [${expected}]
   Assess: ${isEqual(actual, expected)}
 `);
 };
