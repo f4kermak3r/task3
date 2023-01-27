@@ -49,14 +49,7 @@
   }
 
   function take(arr, n) {
-    let newArr = [];
-    if (arr.length === 0 || n > arr.length) {
-      return arr;
-    }
-    for (let i = 0; i < n; i++) {
-      newArr.push(arr[i]);
-    }
-    return newArr;
+    return filter(arr, (arrItem, i) => i < n);
   }
 
   function skip(arr, n) {
