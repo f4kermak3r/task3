@@ -24,5 +24,8 @@
   "dependencies": {
     "obj-and-arr-methods": "^1.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "publishConfig": {
+    "@taurasdub:registry": "https://npm.pkg.github.com"
+  }
 }
