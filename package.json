@@ -1,10 +1,10 @@
 {
-  "name": "obj-and-arr-methods",
+  "name": "@taurasdub/task3",
   "version": "1.0.0",
   "description": "This package includes array methods like reduce, map, filter, forEach, take, skip, some, every, max, min, chain. It also includes object methods: keys, values, pairs, fromPairs.",
   "main": "lib.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "exit 0"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/f4kermak3r/task3/issues"
   },
-  "homepage": "https://github.com/f4kermak3r/task3#readme"
+  "homepage": "https://github.com/f4kermak3r/task3#readme",
+  "dependencies": {
+    "obj-and-arr-methods": "^1.0.0"
+  },
+  "devDependencies": {}
 }
