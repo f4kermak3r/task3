@@ -140,11 +140,11 @@
 
   function chain(arr) {
     let newArr = [];
-    let start = 0;
-    let end = 0;
     return {
       take(n) {
         end = n;
+        console.log(end);
+        console.log(this);
         return this;
       },
       skip(n) {
@@ -158,6 +158,26 @@
         for (let i = start; i < end; i++) {
           newArr.push(arr[i]);
         }
+        return newArr;
+      },
+    };
+  }
+
+  function chain(arr) {
+    let newArr = [];
+    return {
+      take(n) {
+        if (newArr.length === 0) {
+          newArr = [...arr];
+        }
+        newArr = take(newArr, n);
+        return this;
+      },
+      skip(n) {
+        newArr = skip(newArr, n);
+        return this;
+      },
+      value() {
         return newArr;
       },
     };
