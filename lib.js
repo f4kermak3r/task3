@@ -139,32 +139,7 @@
   }
 
   function chain(arr) {
-    let newArr = [];
-    return {
-      take(n) {
-        end = n;
-        console.log(end);
-        console.log(this);
-        return this;
-      },
-      skip(n) {
-        start = n;
-        return this;
-      },
-      value() {
-        if (end > arr.length) {
-          end = arr.length;
-        }
-        for (let i = start; i < end; i++) {
-          newArr.push(arr[i]);
-        }
-        return newArr;
-      },
-    };
-  }
-
-  function chain(arr) {
-    let newArr = [];
+    let newArr = [...arr];
     return {
       take(n) {
         if (newArr.length === 0) {
@@ -175,6 +150,31 @@
       },
       skip(n) {
         newArr = skip(newArr, n);
+        return this;
+      },
+      map(callback) {
+        if (newArr.length === 0) {
+          return this;
+        }
+        newArr = map(newArr, callback);
+        return this;
+      },
+      reduce(callback, initialValue) {
+        newArr = reduce(newArr, callback, initialValue);
+        return this;
+      },
+      filter(callback) {
+        if (typeof newArr !== "object") {
+          newArr = [newArr];
+        }
+        newArr = filter(newArr, callback);
+        return this;
+      },
+      forEach(callback) {
+        if (typeof newArr !== "object") {
+          newArr = [newArr];
+        }
+        newArr = forEach(newArr, callback);
         return this;
       },
       value() {
