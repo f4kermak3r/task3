@@ -3,6 +3,8 @@ const myModule = require("./lib.js");
 const isEqual = (a = [], b = []) =>
   a.length === b.length && a.every((v, i) => v === b[i]);
 
+const isEqualNum = (a, b) => a === b;
+
 const testMap = (input, callback, expected) => {
   const actual = myModule.map(input, callback);
   console.log(`
@@ -20,20 +22,20 @@ testMap([1, 2, 3, 4], (v) => v, [1, 2, 3, 4]);
 console.log("[map]: Testing done");
 
 const testReduce = (input, initialValue, callback, expected) => {
-  const actual = [myModule.reduce(input, callback, initialValue)];
+  const actual = myModule.reduce(input, callback, initialValue);
   console.log(`
         Inputs: ${input}
         Initial Value: ${initialValue}
         Actual: ${actual}
         Expected: ${expected}
-        Assess: ${isEqual(actual, expected)}
+        Assess: ${isEqualNum(actual, expected)}
       `);
 };
 
 console.log("[reduce]: Testing started");
-testReduce([1, 2, 3, 4], 0, (a, b) => a + b, [10]);
-testReduce([0, 1, 1, 5], 5, (a, b) => a + b, [12]);
-testReduce([1, 2, 3, 4], 0, (a, b) => a * b, [24]);
+testReduce([1, 2, 3, 4], 0, (a, b) => a + b, 10);
+testReduce([0, 1, 1, 5], 5, (a, b) => a + b, 12);
+testReduce([1, 2, 3, 4], 0, (a, b) => a * b, 24);
 console.log("[reduce]: Testing done");
 
 const testFilter = (input, callback, expected) => {
