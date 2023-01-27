@@ -179,8 +179,9 @@ const testKeys = (obj, expected) => {
 `);
 };
 console.log("[keys]: Testing started");
-testKeys({ 1: "one", 2: "two", 3: "three" }, [1, 2, 3]);
-testKeys({ 3: "one", 1: "two", 3: "three" }, [1, 2, 3]);
+testKeys({ 1: "one", 2: "two", 3: "three" }, ["1", "2", "3"]);
+testKeys({ 3: "one", 1: "two", 3: "three" }, ["1", "3"]);
+testKeys({ one: 1, two: "two" }, ["one", "two"]);
 console.log("[keys]: Testing done");
 
 const testValues = (obj, expected) => {
@@ -265,3 +266,10 @@ testChain([1, 2, 3], 0, 0, []);
 testChain([1, 2, 3, 4], 0, 10, []);
 testChain(["one", "two", "three", "four"], 3, 10, []);
 console.log("[chain]: Testing done");
+
+let obj = {
+  1: "siu",
+  2: "uis",
+};
+
+console.log(myModule.keys(obj));
