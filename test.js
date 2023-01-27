@@ -98,9 +98,10 @@ console.log("[take]: Testing done");
 const testSkip = (arr, n, expected) => {
   const actual = myModule.skip(arr, n);
   console.log(`
-  Inputs: ${arr} n: ${n}
-  Actual: ${actual}
-  Expected: ${expected}
+  Inputs: [${arr}]
+  Skipped values: ${n}
+  Actual: [${actual}]
+  Expected: [${expected}]
   Assess: ${isEqual(actual, expected)}
 `);
 };
