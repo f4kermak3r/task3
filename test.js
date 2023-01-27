@@ -126,18 +126,18 @@ testSome([10, 10, 10], (item) => item < 3, [false]);
 console.log("[some]: Testing done");
 
 const testEvery = (arr, callback, expected) => {
-  const actual = [myModule.every(arr, callback)];
+  const actual = myModule.every(arr, callback);
   console.log(`
   Inputs: ${arr}
   Actual: ${actual}
   Expected: ${expected}
-  Assess: ${isEqual(actual, expected)}
+  Assess: ${isEqualNum(actual, expected)}
 `);
 };
 console.log("[every]: Testing started");
-testEvery([1, 4, -6, 5], (item) => item > 3, [false]);
-testEvery([1, 4, "test"], (item) => item === "test", [false]);
-testEvery([10, 10, 10], (item) => item > 3, [true]);
+testEvery([1, 4, -6, 5], (item) => item > 3, false);
+testEvery([1, 4, "test"], (item) => item === "test", false);
+testEvery([10, 10, 10], (item) => item > 3, true);
 console.log("[every]: Testing done");
 
 const testMax = (arr, expected) => {
