@@ -72,13 +72,12 @@
   }
 
   function every(arr, callback) {
-    let value = true;
     for (let i = 0; i < arr.length; i++) {
       if (!callback(arr[i], i, arr)) {
         return false;
       }
     }
-    return value;
+    return true;
   }
 
   function max(arr) {
