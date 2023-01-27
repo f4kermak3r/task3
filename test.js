@@ -98,7 +98,7 @@ console.log("[take]: Testing done");
 const testSkip = (arr, n, expected) => {
   const actual = myModule.skip(arr, n);
   console.log(`
-  Inputs: ${arr}
+  Inputs: ${arr} n: ${n}
   Actual: ${actual}
   Expected: ${expected}
   Assess: ${isEqual(actual, expected)}
@@ -266,10 +266,3 @@ testChain([1, 2, 3], 0, 0, []);
 testChain([1, 2, 3, 4], 0, 10, []);
 testChain(["one", "two", "three", "four"], 3, 10, []);
 console.log("[chain]: Testing done");
-
-let obj = {
-  1: "siu",
-  2: "uis",
-};
-
-console.log(myModule.keys(obj));
