@@ -1,6 +1,6 @@
 {
   "name": "@taurasdub/task3",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This package includes array methods like reduce, map, filter, forEach, take, skip, some, every, max, min, chain. It also includes object methods: keys, values, pairs, fromPairs.",
   "main": "lib.js",
   "scripts": {
